@@ -1,3 +1,90 @@
-<h1>
-HelloWorld
-</h1>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admission Chances Prediction</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      font-family: 'Arimo', sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .output {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Admission Chances Prediction</h1>
+    <form action="{{ url_for('predict') }}" method="post">
+      <input type="text" name="GRE Score" placeholder="GRE Score" required /><br>
+      <input type="text" name="TOEFL Score" placeholder="TOEFL Score" required /><br>
+      <input type="text" name="University Rating" placeholder="University Rating" required /><br>
+      <input type="text" name="SOP" placeholder="SOP" required /><br>
+      <input type="text" name="LOR" placeholder="LOR" required /><br>
+      <input type="text" name="CGPA" placeholder="CGPA" required /><br>
+      <input type="text" name="Research" placeholder="Research" required /><br>
+      <button type="submit">Predict</button>
+    </form>
+    <div class="output">
+      {{ prediction_text }}
+    </div>
+  </div>
+</body>
+
+</html>
